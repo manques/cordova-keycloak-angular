@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="net.gcsolutions.lmsqc1" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>create-native-latest</name>
+    <description>Sample Apache Cordova App</description>
+    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
+        Apache Cordova Team
+    </author>
+    <preference name="permissions" value="none" />
+    <preference name="AndroidLaunchMode" value="singleInstance" />
+    <!-- <gap:plugin name="cordova-plugin-inappbrowser" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" version="1.0.0" /> -->
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <content src="index.html" />
+    <allow-intent href="*" />
+    <!-- <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" /> -->
+    <preference name="AndroidLaunchMode" value="singleTask" />
+    <universal-links>
+        <host name="lmsqc1.gc-solutions.net" scheme="https">
+            <path event="keycloak" url="/login" />
+        </host>
+    </universal-links>
+</widget>
