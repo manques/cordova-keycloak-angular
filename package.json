@@ -17,18 +17,15 @@
       "android"
     ],
     "plugins": {
-      "cordova-plugin-browsertab": {
-        "CUSTOM_TAB_COLOR_RGB": "#ff0000"
-      },
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-deeplinks": {}
+      "cordova-universal-links-plugin": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-whitelist": {}
     }
   },
   "devDependencies": {
-    "cordova-android": "^6.2.0",
-    "cordova-plugin-browsertab": "^0.2.0",
-    "cordova-plugin-compat": "^1.2.0",
-    "cordova-plugin-deeplinks": "^1.1.1",
-    "cordova-plugin-whitelist": "^1.3.5"
+    "cordova-android": "^8.1.0",
+    "cordova-plugin-inappbrowser": "^4.0.0",
+    "cordova-plugin-whitelist": "^1.3.5",
+    "cordova-universal-links-plugin": "^1.2.1"
   }
 }

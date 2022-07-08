@@ -2214,7 +2214,7 @@
 	                        processCallback(oauth, promise);
 	                    });
 
-	                    window.cordova.plugins.browsertab.openUrl(loginUrl);
+	                    window.cordova.plugins.browsertabopen(loginUrl);
 	                    return promise.promise;
 	                },
 
@@ -2229,7 +2229,7 @@
 	                        promise.setSuccess();
 	                    });
 
-	                    window.cordova.plugins.browsertab.openUrl(logoutUrl);
+	                    window.cordova.plugins.browsertabopen(logoutUrl);
 	                    return promise.promise;
 	                },
 
@@ -2242,7 +2242,7 @@
 	                        var oauth = parseCallback(event.url);
 	                        processCallback(oauth, promise);
 	                    });
-	                    window.cordova.plugins.browsertab.openUrl(registerUrl);
+	                    window.cordova.plugins.browsertabopen(registerUrl);
 	                    return promise.promise;
 
 	                },
@@ -2250,7 +2250,7 @@
 	                accountManagement : function() {
 	                    var accountUrl = kc.createAccountUrl();
 	                    if (typeof accountUrl !== 'undefined') {
-	                        window.cordova.plugins.browsertab.openUrl(accountUrl);
+	                        window.cordova.plugins.browsertabopen(accountUrl);
 	                    } else {
 	                        throw "Not supported by the OIDC server";
 	                    }

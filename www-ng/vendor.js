@@ -56816,14 +56816,14 @@ function Keycloak (config) {
                     var promise = createPromise();
                     var loginUrl = kc.createLoginUrl(options);
 
-                    // universalLinks.subscribe('keycloak', function(event) {
-                    //     universalLinks.unsubscribe('keycloak');
-                    //     window.cordova.InAppBrowser.close();
-                    //     var oauth = parseCallback(event.url);
-                    //     processCallback(oauth, promise);
-                    // });
+                    universalLinks.subscribe('keycloak', function(event) {
+                        universalLinks.unsubscribe('keycloak');
+                        window.cordova.plugins.browsertab.close();
+                        var oauth = parseCallback(event.url);
+                        processCallback(oauth, promise);
+                    });
 
-                    window.cordova.InAppBrowser.open(loginUrl, '_system');
+                    window.cordova.plugins.browsertab.openUrl(loginUrl);
                     return promise.promise;
                 },
 
@@ -56831,27 +56831,27 @@ function Keycloak (config) {
                     var promise = createPromise();
                     var logoutUrl = kc.createLogoutUrl(options);
 
-                    // universalLinks.subscribe('keycloak', function(event) {
-                    //     universalLinks.unsubscribe('keycloak');
-                    //     window.cordova.InAppBrowser.close();
-                    //     kc.clearToken();
-                    //     promise.setSuccess();
-                    // });
+                    universalLinks.subscribe('keycloak', function(event) {
+                        universalLinks.unsubscribe('keycloak');
+                        window.cordova.plugins.browsertab.close();
+                        kc.clearToken();
+                        promise.setSuccess();
+                    });
 
-                    window.cordova.InAppBrowser.open(logoutUrl, '_system');
+                    window.cordova.plugins.browsertab.openUrl(logoutUrl);
                     return promise.promise;
                 },
 
                 register : function(options) {
                     var promise = createPromise();
                     var registerUrl = kc.createRegisterUrl(options);
-                    // universalLinks.subscribe('keycloak' , function(event) {
-                    //     universalLinks.unsubscribe('keycloak');
-                    //     window.cordova.InAppBrowser.close();
-                    //     var oauth = parseCallback(event.url);
-                    //     processCallback(oauth, promise);
-                    // });
-                    window.cordova.InAppBrowser.open(registerUrl, '_system');
+                    universalLinks.subscribe('keycloak' , function(event) {
+                        universalLinks.unsubscribe('keycloak');
+                        window.cordova.plugins.browsertab.close();
+                        var oauth = parseCallback(event.url);
+                        processCallback(oauth, promise);
+                    });
+                    window.cordova.plugins.browsertab.openUrl(registerUrl);
                     return promise.promise;
 
                 },
@@ -56859,7 +56859,7 @@ function Keycloak (config) {
                 accountManagement : function() {
                     var accountUrl = kc.createAccountUrl();
                     if (typeof accountUrl !== 'undefined') {
-                        window.cordova.InAppBrowser.open(accountUrl, '_system');
+                        window.cordova.plugins.browsertab.openUrl(accountUrl);
                     } else {
                         throw "Not supported by the OIDC server";
                     }
@@ -56873,7 +56873,6 @@ function Keycloak (config) {
                     } else {
                         return "http://localhost";
                     }
-
                 }
             }
         }

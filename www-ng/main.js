@@ -335,9 +335,9 @@ __webpack_require__.r(__webpack_exports__);
 class AuthService {
     constructor() {
         this.keycloak = new keycloak_js__WEBPACK_IMPORTED_MODULE_0__["default"]({
-            url: 'https://authqc.gc-solutions.net/',
+            // url: 'https://authqc.gc-solutions.net/',
             // url: 'http://localhost:8080',
-            // url:'http://10.0.2.2:8080/',
+            url: 'http://10.0.2.2:8080/',
             // realm: 'gcubedev',
             // clientId: 'learnerweb'
             realm: 'example',
@@ -597,16 +597,8 @@ __webpack_require__.r(__webpack_exports__);
 if (_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.production) {
     (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.enableProdMode)();
 }
-function bootstrap() {
-    _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__.platformBrowser().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_0__.AppModule)
-        .catch(err => console.error(err));
-}
-if (window['cordova']) {
-    document.addEventListener('deviceready', () => bootstrap());
-}
-else {
-    bootstrap();
-}
+_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__.platformBrowser().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_0__.AppModule)
+    .catch(err => console.error(err));
 
 
 /***/ })

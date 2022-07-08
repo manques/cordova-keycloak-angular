@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.gcsolutions.lmsqc1" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="net.gcsolutions.lmsqc1" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>create-native-latest</name>
     <description>Sample Apache Cordova App</description>
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
@@ -13,12 +13,23 @@
     <allow-navigation href="*" />
     <content src="index.html" />
     <allow-intent href="*" />
-    <!-- <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" /> -->
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
     <preference name="AndroidLaunchMode" value="singleTask" />
     <universal-links>
         <host name="lmsqc1.gc-solutions.net" scheme="https">
             <path event="keycloak" url="/login" />
         </host>
     </universal-links>
+<!--    <universal-links>-->
+<!--        <host name="localhost" scheme="http">-->
+<!--            <path event="keycloak" url="*" />-->
+<!--        </host>-->
+<!--    </universal-links>-->
+
+    <platform name="android">
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+    </platform>
 </widget>
