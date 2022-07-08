@@ -9,9 +9,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 export class AuthService implements OnInit{
     keycloak = new Keycloak({
-        // url: 'https://authqc.gc-solutions.net/',
+        url: 'https://authqc.gc-solutions.net/',
         // url: 'http://localhost:8080',
-        url:'http://10.0.2.2:8080/',
+        // url:'http://10.0.2.2:8080/',
         // realm: 'gcubedev',
         // clientId: 'learnerweb'
         realm: 'example',
