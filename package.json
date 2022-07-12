@@ -18,8 +18,8 @@
     ],
     "plugins": {
       "cordova-universal-links-plugin": {},
-      "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-inappbrowser": {}
     }
   },
   "devDependencies": {

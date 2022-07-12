@@ -9,7 +9,7 @@ declare let universalLinks: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnChanges, OnDestroy{
+export class AppComponent implements OnInit,  OnDestroy{
   title = 'deeplink and auth server';
   token: string | null | undefined = null;
   user: any | null | undefined = null;
@@ -20,26 +20,24 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy{
     private router: Router,
     private ngZone: NgZone
   ){
-    console.log('app constructor');
   }
 
   ngOnInit(): void {
-    console.log('app init');
-    this.user = this.authService.user;
-    this.token = this.authService.token;
 
     this.authService.AuthInit()
     .then(isAuth => {
-      console.log(isAuth);
-      console.log(this.isAuthenticated);
-      console.log(this.authService.keycloak.authenticated);
+      console.log('app component auth init success', isAuth);
       this.ngZone.run(() => {
         this.updateToken(999);
       });
+      console.log('app component auth init user', this.authService.user);
+      console.log('app component auth init token', this.authService.token);
       if(isAuth){
         this.user = this.authService.user;
         this.token = this.authService.token;
       }
+    }).catch(err => {
+      console.log('app component auth init success', err);
     });
 
    
@@ -52,31 +50,28 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy{
 
 
   onDeeplinkRedirectPage = (evenData: any) => {
-    console.log(evenData);
-    console.log(this.authService.keycloak.isTokenExpired);
-    console.log(this.authService.keycloak.token);
     this.url = evenData;
 
     this.authService.AuthInit()
     .then(isAuth => {
+      console.log('deeplink app component auth init success', isAuth);
+      this.ngZone.run(() => {
+        this.updateToken(999);
+      });
+      console.log('deeplink app component auth init user', this.authService.user);
+      console.log('deeplink app component auth init token', this.authService.token);
       if(isAuth){
-        console.log(isAuth);
-        console.log(this.authService.user);
-        this.ngZone.run(() => {
-          this.user = this.authService.user;
-          this.token = this.authService.token;
-        });
+        this.user = this.authService.user;
+        this.token = this.authService.token;
       }
+    }).catch(err => {
+      console.log('deeplink app component auth init success', err);
     });
-
-    
 
     this.onNavigateByUrl(evenData.path, evenData.params);
   }
 
   onNavigateByUrl = (path: string, params: any) => {
-    console.log(path);
-    console.log(params);
     this.ngZone.run(() => {
       this.router.navigate(
         [path],
@@ -88,31 +83,32 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy{
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('app onchange');
-    // this.authService.AuthInit()
-    // .then(isAuth => {
-    //   if(isAuth){
-    //     console.log(isAuth);
-    //     console.log(this.authService.user);
-    //     this.user = this.authService.user;
-    //     this.token = this.authService.token;
-    //   }
-    // });
-  }
-
   get isAuthenticated(){
 
     return this.authService.isAuthenticated;
   }
 
   ngOnDestroy(): void {
-    console.log('app ondestroy');
     universalLinks.unsubscribe('onDeeplinkPage');
   }
 
   login(){
     this.authService.login();
+    // this.authService.AuthInit()
+    // .then(isAuth => {
+    //   console.log('deeplink app component auth init success', isAuth);
+    //   this.ngZone.run(() => {
+    //     this.updateToken(999);
+    //   });
+    //   console.log('deeplink app component auth init user', this.authService.user);
+    //   console.log('deeplink app component auth init token', this.authService.token);
+    //   if(isAuth){
+    //     this.user = this.authService.user;
+    //     this.token = this.authService.token;
+    //   }
+    // }).catch(err => {
+    //   console.log('deeplink app component auth init success', err);
+    // });
   }
 
   logout(){
@@ -120,12 +116,9 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy{
   }
 
   updateToken(number = 0){
-  console.log(number);
     this.authService.keycloak.updateToken(number)
-    .then((success) => {
-      console.log(success);
-      console.log(this.authService.keycloak.token);
-    }).catch((err) => {
+    .success((success) => {
+    }).error((err) => {
       console.log(err);
     });
 

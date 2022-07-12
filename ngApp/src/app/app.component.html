@@ -333,8 +333,8 @@
 
 <div class="content" role="main">
   <h1>{{title}}</h1>
-  <router-outlet></router-outlet>
-  <button  (click)="login()" *ngIf="!token">LOGIN</button>
+  <!-- <router-outlet></router-outlet> -->
+  <button  (click)="login()" *ngIf="token">LOGIN</button>
   <button  (click)="logout()" *ngIf="token">LOGOUT</button>
   <button (click)="updateToken()">Refresh token</button>
   <button  (click)="updateToken(9999)">Force Refresh token</button>
