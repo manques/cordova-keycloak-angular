@@ -94,21 +94,6 @@ export class AppComponent implements OnInit,  OnDestroy{
 
   login(){
     this.authService.login();
-    // this.authService.AuthInit()
-    // .then(isAuth => {
-    //   console.log('deeplink app component auth init success', isAuth);
-    //   this.ngZone.run(() => {
-    //     this.updateToken(999);
-    //   });
-    //   console.log('deeplink app component auth init user', this.authService.user);
-    //   console.log('deeplink app component auth init token', this.authService.token);
-    //   if(isAuth){
-    //     this.user = this.authService.user;
-    //     this.token = this.authService.token;
-    //   }
-    // }).catch(err => {
-    //   console.log('deeplink app component auth init success', err);
-    // });
   }
 
   logout(){
