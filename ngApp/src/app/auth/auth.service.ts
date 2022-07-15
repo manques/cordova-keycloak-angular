@@ -9,10 +9,11 @@ export class AuthService implements OnInit{
         url: 'https://authqc.gc-solutions.net/',
         // url: 'http://localhost:8080/',
         // url:'http://10.0.2.2:8080/',
-        realm: 'gcubedev',
-        clientId: 'learnerweb'
-        // realm: 'example',
-        // clientId: 'cordova',
+        // realm: 'gcubedev',
+        // clientId: 'learnerweb'
+        realm: 'example',
+        clientId: 'cordova',
+        enableLogging: true
     });
 
     constructor(){}
@@ -52,8 +53,10 @@ export class AuthService implements OnInit{
         this.keycloak
                 .init(/** @type {?} */ (({
                     onLoad: 'login-required',
-                    // adapter: 'cordova',
-                    // responseMode: 'query',
+                    adapter: 'cordova',
+                    redirectUri: 'android-app://net.gcsolutions.lmsqc1/https/lmsqc1.gc-solutions.net/login',
+                    responseMode: 'query',
+                    // redirectUri: window.location.href
                 })))
                 .success(isAuth => {
                     console.log('auth service login sucesss', isAuth);
