@@ -36,7 +36,8 @@ ngApp/out-tsc
 ngApp/bazel-out
 
 # dependencies
-ngApp/node_modules
-
+!/ngApp/node_modules/
+/ngApp/node_modules/*
+!/ngApp/node_modules/keycloak-js
 
 
