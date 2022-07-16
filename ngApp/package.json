@@ -22,10 +22,8 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-    "@manques/keycloak-js": "^1.0.0",
+    "@manques/keycloak-js": "^1.0.2",
     "core-js": "^2.4.1",
-    "keycloak-angular": "^2.0.0",
-    "keycloak-js": "^4.0.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

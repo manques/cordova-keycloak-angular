@@ -24,7 +24,6 @@ export class AuthService implements OnInit{
 
     AuthInit(){
         return new Promise((resolve, reject) =>{
-
             this.keycloak
                 .init(/** @type {?} */ (({
                     onLoad: 'login-required',
