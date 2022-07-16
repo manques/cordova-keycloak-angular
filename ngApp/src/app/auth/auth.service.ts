@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from "@angular/core";
 import { v4 as uuidv4 } from 'uuid';
-import * as Keycloak from 'keycloak-js';
+import * as Keycloak from '@manques/keycloak-js';
 
 
 

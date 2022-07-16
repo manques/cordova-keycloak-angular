@@ -281,7 +281,7 @@ exports.AuthModule = AuthModule;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var Keycloak = __webpack_require__("./node_modules/keycloak-js/dist/keycloak.js");
+var Keycloak = __webpack_require__("./node_modules/@manques/keycloak-js/keycloak.js");
 var AuthService = /** @class */ (function () {
     function AuthService() {
         this.keycloak = Keycloak({
