@@ -75581,7 +75581,6 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
         var useNonce = true;
         
         kc.init = function (initOptions) {
-            // debugger
             kc.authenticated = false;
 
             callbackStorage = createCallbackStorage();
@@ -75707,7 +75706,6 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
             }
 
             function processInit() {
-                // debugger
                 var callback = parseCallback(window.location.href);
 
                 if (callback) {
@@ -76093,7 +76091,6 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
         }
 
         function processCallback(oauth, promise) {
-            debugger;
             var code = oauth.code;
             var error = oauth.error;
             var prompt = oauth.prompt;
@@ -76436,7 +76433,6 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
         }
 
         function parseCallback(url) {
-            debugger;
             var oauth = parseCallbackUrl(url);
            
             if (!oauth) {
@@ -76739,7 +76735,6 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
                     },
 
                     redirectUri: function(options, encodeHash) {
-                        // debugger
                         if (arguments.length == 1) {
                             encodeHash = true;
                         }
@@ -76749,8 +76744,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
                         } else if (kc.redirectUri) {
                             return kc.redirectUri;
                         } else {
-                            return 'android-app://net.gcsolutions.lmsqc1/https/lmsqc1.gc-solutions.net/login'
-                            // return location.href;
+                            return location.href;
                         }
                     }
                 };
@@ -76759,7 +76753,6 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
             if (type == 'cordova') {
                 loginIframe.enable = false;
                 var cordovaOpenWindowWrapper = function(loginUrl, target, options) {
-                    // debugger
                     if (window.cordova && window.cordova.InAppBrowser) {
                         // Use inappbrowser for IOS and Android if available
                         return window.cordova.InAppBrowser.open(loginUrl, '_system');
@@ -76919,11 +76912,18 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["Version"]('5.2.11
                         }
                     },
 
-                    redirectUri: function(options) {
-                        if(options && options.redirectUri){
-                            return options.redirectUri;
+                    redirectUri: function(options, encodeHash) {
+                        if (arguments.length == 1) {
+                            encodeHash = true;
                         }
-                        return 'android-app://net.gcsolutions.lmsqc1/https/lmsqc1.gc-solutions.net/login';
+
+                        if (options && options.redirectUri) {
+                            return options.redirectUri;
+                        } else if (kc.redirectUri) {
+                            return kc.redirectUri;
+                        } else {
+                            return location.href;
+                        }
                     }
                 }
             }
